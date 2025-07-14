@@ -25,7 +25,7 @@ def scrape_trustpilot_reviews(base_url: str):
     while True:
         url = f"{base_url}?page={page_number}"
         reviews = get_reviews_from_page(url)
-
+        print(reviews)  
         if not reviews:
             break
 
@@ -46,3 +46,8 @@ def scrape_trustpilot_reviews(base_url: str):
     reviews_data = [dict(t) for t in {tuple(d.items()) for d in reviews_data}]
     
     return reviews_data
+
+
+if __name__ == "__main__":
+    reviews = scrape_trustpilot_reviews("https://au.trustpilot.com/review/www.alex.bank")
+    print(reviews)
